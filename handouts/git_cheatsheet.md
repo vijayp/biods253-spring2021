@@ -21,18 +21,18 @@ Note: if you have never pushed remotely before, you will need to add `--set-upst
 At this point your branch should be updated on github
 1. Do you have to make more edits? If yes, go to (3)
 1. If you need to make a pull request:
-  1. Go to github.com, navigate to the repository and create a pull request
-  1. Wait until you get approval to merge the request,
-  1. If you need to make further changes, go to (3). Pull requests will automatically update.
-  1. When ready, merge using the github.com interface.
-  1. If there is a merge conflict, then see RESOLVE CONFLICTS sheet.
+   1. Go to github.com, navigate to the repository and create a pull request
+   1. Wait until you get approval to merge the request,
+   1. If you need to make further changes, go to (3). Pull requests will automatically update.
+   1. When ready, merge using the github.com interface.
+   1. If there is a merge conflict, then see RESOLVE CONFLICTS sheet.
 1. If you do not need to make a pull request:
-  1. You can merge branch using the interface on github.com OR:
-  1. Switch to the master (or branch you want to merge into):
-  `git switch master`
-  1. Merge in the changes
-  `git merge myname/what-the-branch-is-for`
-  1. If there are conflicts, see the RESOLVE CONFLICTS sheet
+   1. You can merge branch using the interface on github.com OR:
+   1. Switch to the master (or branch you want to merge into):
+   `git switch master`
+   1. Merge in the changes
+   `git merge myname/what-the-branch-is-for`
+   1. If there are conflicts, see the RESOLVE CONFLICTS sheet
 
 
 
