@@ -1,0 +1,3 @@
+Simple server that serves static html files and can also search sars cov2 genome.
+to use:
+pyhon3 py/server.py
