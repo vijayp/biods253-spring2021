@@ -1,9 +1,14 @@
-#!/usr/bin/env python3
 import argparse
+import urllib
+import os
+import functools
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 
 
-class MyServer(SimpleHTTPRequestHandler):
+class MyHandler(SimpleHTTPRequestHandler):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
     def _set_headers(self):
         self.send_response(200)
         self.send_header("Content-type", "text/html")
@@ -17,15 +22,20 @@ class MyServer(SimpleHTTPRequestHandler):
         return content.encode("utf8")  # NOTE: must return a bytes object!
 
     def do_POST(self):
-        # Doesn't do anything with posted data
+        # searches the sars cov2 genome for a specific sequence.
         content_length = int(self.headers['Content-Length']) # <--- Gets the size of data
         post_data = self.rfile.read(content_length) # <--- Gets the data itself
+        post_dict = urllib.parse.parse_qs(post_data.decode('utf-8'))
         self._set_headers()
-        self.wfile.write("<html><body><h1>POST!</h1><pre>" + post_data + "</pre></body></html>")
+        pattern_to_search = post_dict['pattern'][0]
+        matches = os.popen("grep '%s' data/sequences.fasta | head" % pattern_to_search).read()
+        out = "<h1>SARS-CoV2 matches!</h1><pre>" + matches + "</pre>"
+        self.wfile.write(self._html(out))
 
-def run(server_class=HTTPServer, handler_class=MyServer, addr="localhost", port=8000):
+def run(server_class=HTTPServer, handler_class=MyHandler, addr="localhost", port=8000, directory='.'):
     server_address = (addr, port)
-    httpd = server_class(server_address, handler_class)
+    handler = functools.partial(handler_class, directory=directory)
+    httpd = server_class(server_address, handler)
 
     print(f"Starting httpd server on {addr}:{port}")
     httpd.serve_forever()
@@ -37,7 +47,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-l",
         "--listen",
-        default="localhost",
+        default="0.0.0.0",
         help="Specify the IP address on which the server listens",
     )
     parser.add_argument(
@@ -47,6 +57,14 @@ if __name__ == "__main__":
         default=8000,
         help="Specify the port on which the server listens",
     )
+    parser.add_argument(
+        "-s",
+        "--static",
+        type=str,
+        default="static/",
+        help="Specify the static directory",
+    )
+
     args = parser.parse_args()
-    run(addr=args.listen, port=args.port)
+    run(addr=args.listen, port=args.port, directory=args.static)
 
