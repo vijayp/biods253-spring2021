@@ -1,0 +1,11 @@
+this program will take a data file with numbers, and create git commits to remove all the odd numbers one at a time.
+usage:
+1. create a new directory elsewhere (e.g. /tmp/test)
+mkdir /tmp/test && cd /tmp/test
+2. create a file with some numbers:
+seq 100 > /tmp/test/numbers
+3. create a git repo:
+git init
+4. path/to/biodsrepo/git-number-remove/remove_numbers.py ./numbers
+5. git status
+6. git log
