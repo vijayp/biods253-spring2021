@@ -1,3 +1,21 @@
+# How to set up your computer to work with Github (MacOS/Linux)
+
+1. First of all, you will need to create a public and private keypair:
+`ssh-keygen -o -a 100 -t ed25519`
+ This will create a key in your ~/.ssh directory
+2. Upload the new public key (`ls -tr ~/.ssh/ | tail -1` will tell you which one it is) to github according to this [guide](https://docs.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account)
+
+# How to clone an existing public repository
+1. Find the appropriate URL [using this guide](https://checkmarx.atlassian.net/wiki/spaces/KC/pages/131432811/GitHub+-+Tips+on+Finding+Git+GitHub+Repository+URLs). Make sure to use the SSH url, NOT the https url.
+2. `git clone git@github.com:…`
+Now you should have a copy of the repository in your current directory
+
+# How to create a new repository locally, not using github
+1. In the uppermost directory you want to include, simply run `git init`
+
+# How to push a new repository to github
+1. Follow [github's tutorial] (https://docs.github.com/en/github/importing-your-projects-to-github/adding-an-existing-project-to-github-using-the-command-line)
+
 # How to make changes using branches:
 
 1. Start with the branch you want to make changes in (usually master or main)	
@@ -20,7 +38,7 @@
 Note: if you have never pushed remotely before, you will need to add `--set-upstream` as the error message will explain
 At this point your branch should be updated on github
 1. Do you have to make more edits? If yes, go to (3)
-1. If you need to make a pull request:
+1. If you need to make a pull request, [follow this guide](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request) and/or the following steps:
    1. Go to github.com, navigate to the repository and create a pull request
    1. Wait until you get approval to merge the request,
    1. If you need to make further changes, go to (3). Pull requests will automatically update.
