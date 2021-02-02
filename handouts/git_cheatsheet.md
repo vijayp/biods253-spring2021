@@ -14,7 +14,7 @@ Now you should have a copy of the repository in your current directory
 1. In the uppermost directory you want to include, simply run `git init`
 
 # How to push a new repository to github
-1. Follow [github's tutorial] (https://docs.github.com/en/github/importing-your-projects-to-github/adding-an-existing-project-to-github-using-the-command-line)
+1. Follow [github's tutorial](https://docs.github.com/en/github/importing-your-projects-to-github/adding-an-existing-project-to-github-using-the-command-line)
 
 # How to make changes using branches:
 
