@@ -4,7 +4,7 @@
 
 Biologists, data scientists, etc. make use of software to analyse their datasets. We want to aid them in setting up new projects with a structure better suited to writing code that is well-documented, structured, testable, and readable. Additionally we want to make it really easy to encapsulate dependencies, using best practices, either using virtual environments, Docker, or serverless infrastructure on Amazon/Google/Sherlock.  
 
-We will build a system that (when complete) allows a user to select from a set of ode / infrastructure options for their project, and will provide them with a ready-to-use git-enabled repository with an appropriate structure and easy-to-use systems.  We will start with support for Python-based systems, and then later expand to R, anaconda, and a number of other systems. The system will eventually support a plug-in architecture that will allow members of the community to add support for new languages/frameworks without writing a lot (ideally any) code.
+We will build a system that (when complete) allows a user to select from a set of code / infrastructure options for their project, and will provide them with a ready-to-use git-enabled repository with an appropriate structure and easy-to-use systems.  We will start with support for Python-based systems, and then later expand to R, anaconda, and a number of other systems. The system will eventually support a plug-in architecture that will allow members of the community to add support for new languages/frameworks without writing a lot (ideally any) code.
 
 ## Background: 
 
