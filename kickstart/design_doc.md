@@ -60,6 +60,18 @@ The system will be composed of a number of components that all work together to 
 Code for the system will be in `repo/py`.
 
 
+In Phase I, we will provide the following features:
+* A git repository with the initial commit already set up
+* A python venv setup, with a basica requirements.txt
+* A python library file where you'll put your main code/logic (filled out with a simple example)
+* A python command-line interface which will allow you to call functions in your library file
+* A python/flask website which will provide a web interface for the library
+* A simple unittest setup that will test some code in the library file
+* A makefile that will allow creation of a Docker image, running tests, setting up the virtual environment, and potentially even deploying the flask code to AWS serverless.
+* Various documentation files
+
+To use the system, the user will proceed to a website, and submit a form with customization parameters. The site will then provide a zip file with the above features. The user will then expand the zip file and proceed to run a configuration script that will push the code to github and set up virtual environemnts. The user will then modify code in the python files to suit his/her needs.  Unnecessary files can be deleted. In future phases, the user will be able to select the subset of features from above required so as to not have to delete files.
+
 ### File Templates
 
 Every user request will generate a unique set of files. We will compute these by creating certain code template files, which will then be rendered using data provided by the user. We will use the Jinja2 templating system. In Phase I, all files will be nested under the following directory: `repo/py/data/code_templates/py3_expansion/`. Under here, the file system structure will be replicated into the eventual zip file.  In future phases, we will have a manifest for each plugin area with a bit of logic, i.e. which choices are incompatible, and which ones rely on other ones. This will be loaded and used to render the user form.
@@ -75,6 +87,7 @@ We will write python code to expand the file templates against user input. This 
 * selected_features = dictionary of user selected features. for now {docker, serverless, unittest} are options.
 
 This will generate files in a filesystem tree. We will ideally use a temporary directory or in-memory filesystem to perform this expansion.  
+
 
 ### Git repo creation
 
